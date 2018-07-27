@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="jewerlystyle">
+<head>
+    {plugin "Zero_Section_SeoTag" view="Www_Section_SeoTag"}
+    {include "Www_Include_Header"}
+</head>
+{plugin "Www_Users_Online"}
+<body>
+<div class="container">
+    <!-- header -->
+    <header>
+        <div class="phones">
+            <span class="phone">+7(495)766-34-91</span>
+            <span class="phone">+7(985)766-34-91</span>
+        </div>
+        <div class="mini-nav">
+            <ul class="mini-nav-list">
+                <li>
+                    <a href="/">
+                        <img src="/assets/css/common/img/main-page-button.png" alt="На главную"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="/feedback">
+                        <img src="/assets/css/common/img/feedback-button.png" alt="Обратная связь"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sitemap.xml">
+                        <img src="/assets/css/common/img/site-map-button.png" alt="Карта сайта"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/css/common/img/logo.png">
+            </a>
+        </div>
+    </header>
+    <!-- end of header-->
+    <!-- main-nav -->
+    <div class="main-nav">
+        {plugin "Www_Section_NavigationMain"}
+    </div>
+    <!-- end of main-nav -->
+    <div class="row-fluid">
+        <div class="lefts">
+            <!-- search -->
+            <form action="/search" method="GET">
+                <div class="search"><input type="text" name="search" id="form-query" placeholder="Поиск"><button class="sendsubmit"></button></div>
+            </form>
+            <!-- end of search-->
+            <!-- sidebar -->
+            {plugin "Zero_Section_NavigationAccordion" view="Www_Section_NavigationAccordion" section_id=1050}
+            <!-- end of sidebar -->
+        </div>
+        <!-- content container -->
+        <div class="rights">
+            <div class="clear-right">
+                <!-- breadcrumb -->
+				{if ( Zero_App::$Section->Zero_Section_ID > 0 )}
+                {plugin "Zero_Section_NavigationLine" view="Www_Section_NavigationLine"}
+                {/}
+                <!-- end of breadcrumb -->
+                <!-- content -->
+                <div class="content clear-right">
+                    {$Content}
+                </div>
+                <!-- end of content -->
+                <!-- breadcrumb -->
+				{if ( Zero_App::$Section->Zero_Section_ID > 0 )}
+                {plugin "Zero_Section_NavigationLine" view="Www_Section_NavigationLine"}
+                {/}
+				<!-- end of breadcrumb -->
+            </div>
+        </div>
+        <!-- end of content container -->
+        <!-- notifications -->
+        <div growl-notifications class="growl-notifications"></div>
+        <!-- end of notifications -->
+    </div>
+    <footer>
+        <!-- Yandex.Metrika informer -->
+        <a href="https://metrika.yandex.ru/stat/?id=28610396&amp;from=informer"
+           target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/28610396/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                                               style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{ Ya.Metrika.informer({ i:this,id:28610396,lang:'ru'});return false}catch(e){}"/></a>
+        <!-- /Yandex.Metrika informer -->
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter28610396 = new Ya.Metrika({ id:28610396,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true });
+                    } catch(e) { }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="//mc.yandex.ru/watch/28610396" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+    </footer>
+</div>
+
+</body>
+</html>

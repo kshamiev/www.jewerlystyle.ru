@@ -1,0 +1,38 @@
+<h1>Корзина</h1>
+<div class="list" ng-controller="RemoveWaresCtrl">
+    {if ( 0 < count($dataList) )}
+    {foreach ($dataList as $row)}
+    <figure class="list-item">
+        <div class="list-item-image">
+            {if ( $row['Imgs'] )}
+            <img src="{HTTPD}/{$row['Imgs']}">
+            {else}
+            <img src="/assets/img/nophoto.gif">
+            {/}
+        </div>
+        <div class="list-item-info">
+            <div class="list-item-descr">
+                <div class="list-item-name">
+                    {$row['Name']}
+                </div>
+                <div class="list-item-body">
+                    {$row['Description']}
+                </div>
+            </div>
+        </div>
+        <div class="list-item-controls" style="width: 106px;">
+            <div class="line-item-basket-links">
+                <a href="/product-id:{$row['ID']}-{$row['NameTrans']}.html" title="{$row['Name']}" class="btn">Пересчитать</a>
+                <a href="#" ng-click="removeWares({$row['ID']})" class="btn">Удалить</a>
+            </div>
+        </div>
+    </figure>
+    {/}
+    {else}
+        <div class="not-found">Ваша корзина пуста</div>
+    {/}
+</div>
+<div ng-controller="ClearBasketCtrl" style="line-height: 3em; margin-left: 10px">
+    <a href="#" class="btn" ng-click="clearBasket()" ng-show="showLinks">Очистить корзину</a>
+    <a href="/orders" class="btn" ng-show="showLinks">Оформить заказ</a>
+</div>

@@ -1,0 +1,68 @@
+<p align="center" class="message-system">&nbsp;
+    {foreach (Zero_App::Get_Variable('action_message') as $row)}
+    {$row[1]}&nbsp;&nbsp;
+    {/}
+</p>
+<form action="{URL}" method="post">
+    <input type="hidden" name="act" value="Login">
+    <table class="tbledit" width="300px" cellspacing="1" cellpadding="0" border="0" align="center">
+        <tr>
+            <th colspan="2">Вход</th>
+        </tr>
+        <tr>
+            <td width="50px">{translation "Zero_Users" "Login"}:</td>
+            <td>
+                <input class="field" type="text" name="Login">
+            </td>
+        </tr>
+        <tr>
+            <td>{translation "Zero_Users" "Password"}:</td>
+            <td>
+                <input class="field" type="password" name="Password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input class="btn" type="submit" value="вход">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<form action="{URL}" method="post">
+    <input type="hidden" name="act" value="Reminder">
+    <table class="tbledit" width="400px" cellspacing="1" cellpadding="0" border="0" align="center">
+        <tr>
+            <th colspan="2">Восстановление пароля</th>
+        </tr>
+        <tr>
+            <td width="200px">
+                Электронный адресс <span class="subj_error">*</span>
+                {if ( isset($Error_Validator['Email']) )}<span class="subj_prop_error">{$Error_Validator['Email'][1]}</span>{/if}
+            </td>
+            <td>
+                <input class="field" type="text" name="Users[Email]">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Введите строку с картинки
+                {if ( isset($Error_Validator['Keystring']) )}<span class="subj_prop_error">{$Error_Validator['Keystring'][1]}</span>{/if}
+            </td>
+            <td>
+                <input class="field" type="text" name="Users[Keystring]">
+            </td>
+        </tr>
+        <tr>
+            <td>Клините по картинке, если ен читается</td>
+            <td align="center">
+                <img onclick="this.src='/admin/user/captcha?'+Math.random();" src="/admin/user/captcha" border="0" style="cursor: pointer;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input class="btn" type="submit" value="отправить">
+            </td>
+        </tr>
+    </table>
+</form>

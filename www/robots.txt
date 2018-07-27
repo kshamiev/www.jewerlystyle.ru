@@ -1,0 +1,5 @@
+User-agent *
+Disallow: /user*
+
+Sitemap: {url карты сайта}
+Host: jewelystyle.ru

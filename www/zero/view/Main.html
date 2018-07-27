@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      {plugin "Zero_Section_SeoTag" view="Zero_Section_SeoTag"}
+      {include "Zero_Include_Header"}
+  </head>
+  <body>
+  {plugin "Zero_Users_Online"}
+    <table width="1250px" height="100%" cellspacing="1" cellpadding="5" border="1" align="center">
+      <tr>
+        <td width="220px" height="40px" align="center">{plugin "Zero_Content_Page" block="head_left"}</td>
+        <td>
+            {translation "Www_All" "Project"}: {Zero_App::$Config->Site_Name}&nbsp;&nbsp;
+            {foreach (Zero_App::Get_Variable('action_message') as $row)}
+            {if ( $row[0] == 1 )}
+            <font color="red">{$row[1]}</font>
+            {else}
+            {$row[1]}
+            {/}
+            &nbsp;&nbsp;
+            {/}
+        </td>
+        <td width="150px" align="center">
+            <a href="/" target="_blank">сайт</a>
+            <a href="/user/logout?act=Logout">выход</a>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td>
+            {plugin "Zero_Section_NavigationAccordion" section_id=33 access="true"}
+        </td>
+        <td id="wrapper-content" colspan="2">
+            {plugin "Zero_Section_NavigationLine"}
+            {$Content}
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

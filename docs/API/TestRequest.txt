@@ -1,0 +1,19 @@
+Вход
+{"Login":"dev","Password":"dev"}
+Восстановление пароля
+{"Users":{"Email":"konstantin@shamiev.ru","Keystring":"sx6xd"}}
+Регистрация
+{"Users":{"Name":"Разработчик","Login":"dev","Email":"dev@domain.com","Phone":"456","Address":"cccccc\r\nccc\r\ncc\r\nqqqqq\r\nz","Keystring":"v6xi7"}}
+Профиль
+{"Users":{"ImgAvatar":{"Hash":"df7be9dc4f467187783aca68c7ce98e4df2172d0"},"Name":"Разработчик","Email":"konstantin@shamiev.ru","Phone":"456","Address":"---","Password":"","PasswordR":""}}
+Обратная связь
+{"Message":{"Name":"Новая тема","Email":"dev@domain.com","Fio":"Пупкин","Message":"cccccc\r\nccc\r\ncc\r\nqqqqq\r\nz","Keystring":"795yqk"}}
+
+Добавление, пересчет, удаление продукции в корзине
+{"Shop_Goods_ID":165,"Cnt":25}
+{"Shop_Goods_ID":320,"Cnt":10}
+{"Shop_Goods_ID":20,"Cnt":43}
+
+Оформление нового заказа пользователем
+{"Address":"Адресс доставки","Comment":"Комментарий доставки"}
+

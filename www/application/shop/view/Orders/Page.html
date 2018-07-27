@@ -1,0 +1,27 @@
+<h1>Оформление заказа</h1>
+<form ng-controller="CreateOrderCtrl" ng-submit="createOrder()" ng-show="showOrderForm">
+    <div class="form">
+        <fieldset>
+            {if ( 0 < $basketSum['Cnt'] )}
+            <div class="form-inputs">
+                <div class="fix-label" ng-init="address = '{htmlspecialchars($Users->Address)}'">
+                    <label>Адресс доставки</label>
+                    <textarea class="field" name="Orders[Address]" ng-model="address" style="min-width: 350px; max-width: 350px;" rows="5" required></textarea>
+                </div>
+            </div>
+            <div class="form-inputs">
+                <div class="fix-label" ng-init="comment = 'Удобное время звонка:\n\nУдобное время доставки:\n\nДругое:'">
+                    <label>Комментарий к доставке</label>
+                    <textarea class="field" name="Orders[Comment]" ng-model="comment" style="min-width: 350px; max-width: 350px;" rows="5" required></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <input class="btn" type="submit" value="Оформить">
+            </div>
+            {else}
+                <div class="hide-form">Нечего оформлять</div>
+            {/}
+        </fieldset>
+    </div>
+</form>
+<div class="not-found" ng-controller="ShowStubCtrl" ng-show="showStub"><span ng-bind="msg"></span></div>

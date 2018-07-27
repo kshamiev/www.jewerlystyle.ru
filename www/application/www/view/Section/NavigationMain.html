@@ -1,0 +1,7 @@
+{foreach ($navigation as $row )}
+<li><a href="{$row['Url']}" title="{$row['Title']}">{$row['Name']}</a></li>
+{/foreach}
+<div class="widget-basket" ng-controller="BasketShortCtrl">
+    <div class="amount"><span ng-bind="basketCnt"></span> тов | <span ng-bind="basketSumma"> </span> руб</div>
+    <a href="/basket"><img src="/assets/css/common/img/basket.png"></a>
+</div>

@@ -1,0 +1,52 @@
+<form ng-submit="registration()" ng-controller="RegistrationCtrl">
+    <div class="form">
+        <fieldset>
+            <h1>Регистрация</h1>
+            <div class="form-inputs">
+                <label>ФИО<span>*</span></label>
+                <input class="field" type="text" name="Users[Name]" ng-model="name" required placeholder="Иванов И.И.">
+                <span id="Name" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Логин<span>*</span></label>
+                <input class="field" type="text" name="Users[Login]" ng-model="login" required placeholder="login">
+                <span id="Login" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Почтовый ящик<span>*</span></label>
+                <input class="field" type="email" name="Users[Email]" ng-model="email" required ng-pattern="EMAIL_REGEXP" placeholder="email@example.com">
+                <span id="Email" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Номер телефона<span>*</span></label>
+                <input class="field" type="text" name="Users[Phone]" ng-model="phone" required placeholder="1112223344" number-kies>
+                <span id="Phone" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Адресс доставки по умолчанию</label>
+                <textarea class="field" name="Users[Address]" rows="7" ng-model="address" placeholder="г. Город, ул. Улица, д.1 кв.1"></textarea>
+                <span id="Address" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Подписка на новости</label>
+                <input type="checkbox" ng-model="isnews">
+                <span id="IsNews" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <div class="captcha-label">
+                    <label>Кликните по картинке, чтобы обновить</label>
+                    <img onclick="this.src='/user/captcha?'+Math.random();" src="/user/captcha" border="0" style="cursor: pointer;">
+                </div>
+            </div>
+            <div class="form-inputs">
+                <label>Введите символы с картинки</label>
+                <input class="field" type="text" name="Users[Keystring]" ng-model="keystring" required>
+                <span id="Keystring" class="mistake"></span>
+            </div>
+            <div class="form-actions">
+                <input class="btn" type="submit" value="Зарегистрироваться">
+                <a href="/user">Войти</a>
+            </div>
+        </fieldset>
+    </div>
+</form>

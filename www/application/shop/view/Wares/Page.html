@@ -1,0 +1,30 @@
+<h1>{Zero_App::$Section->Name}</h1>
+{Zero_App::$Section->Content}
+<div class="list" ng-controller="RemoveWaresCtrl">
+    {foreach ($dataList as $row)}
+    <figure class="list-item">
+        <div class="list-item-image">
+            {if ( $row['Imgs'] )}
+                <img src="{HTTPD}/{$row['Imgs']}">
+            {else}
+                <img src="/assets/img/nophoto.gif">
+            {/}
+        </div>
+        <div class="list-item-info">
+            <div class="list-item-descr">
+                <div class="list-item-title">
+                    <a href="/product-id:{$row['ID']}-{$row['NameTrans']}.html" title="{$row['Title']}">{$row['Name']}</a>
+                </div>
+                <div class="list-item-body">
+                    {nl2br($row['DescriptionSmall'])}
+                </div>
+            </div>
+        </div>
+        <div class="list-item-controls">
+            <div class="price">{$row['Price']} p.</div>
+            <div class="block-control"><a href="/product-id:{$row['ID']}-{$row['NameTrans']}.html" title="{$row['Title']}" class="btn">Купить</a></div>
+        </div>
+    </figure>
+    {/}
+</div>
+{plugin "Zero_Crud_Pager" view="Www_Section_Pager" Count=$PagerCount Page=$PagerPage PageItem=$PagerPageItem PageStep=$PagerPageStep}

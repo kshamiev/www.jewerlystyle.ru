@@ -1,0 +1,98 @@
+<h1>{$Wares->Name}</h1>
+<table class="table table-bordered">
+    <tbody>
+    {if ( count($images) )}
+    <tr>
+        <td ng-controller="SliderCtrl">
+            <div class="bxslider" startslider>
+                {foreach ($images as $id => $row)}
+                    {if ( $row['Imgs'] )}
+                        <div><img src="{HTTPD}/{$row['Imgs']}" title="{htmlspecialchars($row['Name'])}" ng-click='showSliderModal()'><div style="width: 100px; font-size: 11px;">{htmlspecialchars($row['Name'])}</div></div>
+                    {else}
+                        <img src="/assets/img/nophoto.gif">
+                    {/}
+                {/}
+            </div>
+        </td>
+    </tr>
+    {/if}
+    {if ( 0 < count($goods) )}
+    <tr>
+        <td>
+            <table class="table table-bordered" ng-controller="AddToBasketCtrl">
+                <caption>Фильтр <select ng-model="currentPack" ng-options="pack.name for pack in packs" ng-change="getCurrent(currentPack.id)"></select></caption>
+                <tbody>
+                    <tr>
+                        <th>Цвет</th>
+                        <th>Наличие</th>
+                        <th>Кол-во в корзине</th>
+                        <th>Цена</th>
+                        <th>Итогова цена</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="goodObj in goodsArray | filter : currentPack.name">
+                        <td>{{ goodObj.Color }}</td>
+                        <td class="cnt-presence">{{ goodObj.presence }}</td>
+                        <td class="cnt-basket"><input type="text" ng-model="goodObj.CntBasket" placeholder="" ng-change="changeCntReserve(goodObj)" maxlength="7" number-kies></td>
+                        <td>{{ goodObj.Price }}</td>
+                        <td class="price">{{ goodObj.Price * goodObj.CntBasket }}</td>
+                        <td class="button"><input type="submit" class="btn" ng-click="saveToBasket(goodObj.CntBasket, goodObj.Shop_Goods_ID, $event)" style="text-align: center; display: block;  margin: auto;" ng-disabled="goodObj.disabledButton" ng-class="{ disabledButton: goodObj.disabledButton }" value="Добавить"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    {else}
+    <tr>
+        <td>
+            Нет в продаже
+        </td>
+    </tr>
+    {/if}
+    <tr>
+        <td>
+            {$Wares->Content}
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div ng-controller="ModalWindowsCtrl">
+    <modal-dialog show='showLoginFlag' width='700px' height='350px'>
+        <div id="login-form-label">Пожалуйста авторизируйтесь или пройдите <a href="/user/registration" target="_blank">регистрацию</a>.</div>
+        <form ng-submit="submit()" ng-controller="ModalLoginCtrl">
+            <div class="form">
+                <fieldset>
+                    <h1>Аутентификация</h1>
+                    <div class="form-inputs">
+                        <label>Логин</label>
+                        <input class="field" type="text" name="Login" ng-model="login" required>
+                    </div>
+                    <div class="form-inputs">
+                        <label>Пароль</label>
+                        <input class="field" type="password" name="Password" ng-model="password" required>
+                        <label for="memory">Запомнить?</label> <input type="checkbox" ng-model="memory" id="memory">
+                    </div>
+                    <div class="form-actions">
+                        <input class="btn" type="submit" value="Войти">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="not-found-red" ng-controller="ShowMistakeCtrl" ng-show="showMistake"><span ng-bind="msg"></span></div>
+        </form>
+    </modal-dialog>
+    <modal-dialog show='modalShown' width='700px' height='650px'>
+        <div ng-controller="ModalSliderCtrl">
+            <div id="carousel">
+                <div class="carousel-prev" ng-click="prev()"></div>
+                <div class="carousel-next" ng-click="next()"></div>
+                <div class="carousel-holder">
+                    <div class="carousel-slider">
+                        {foreach ($images as $id => $row)}
+                        <div class="catousel-item"><img src="{HTTPD}/{$row['Imgb']}"><br>{htmlspecialchars($row['Name'])}</div>
+                        {/}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </modal-dialog>
+</div>

@@ -1,0 +1,63 @@
+<form ng-submit="saveProfile()" ng-controller="ProfileCtrl">
+    <div class="form">
+        <fieldset>
+            <h1>Профиль</h1>
+            <div class="form-inputs">
+                <label>Ваш Логин</label>
+                <div style="display: inline; font: bold; font-size: 22px; color: rgb(105, 64, 47); margin-left: 15px;">{$Users->Login}</div>
+            </div>
+            <div class="form-inputs">
+                <div class="fix-label">
+                    <label>Аватар</label>
+                    <img ng-src="{{ getImage }}" height="220" width="220" ng-show="showAvatar"><br>
+                    <label for="remove-avatar">Удалить аватар?</label> <input type="checkbox" ng-model="removeavatar" id="remove-avatar"><br>
+                    <label for="avatar-file">Выберите изображение</label> <input type="file" ng-file-select="onFileSelect($files)" ng-model="imgavatar" id="avatar-file"><br>
+                    <span class="profile-progress-bar" ng-show="showProgress"></span>
+                </div>
+            </div>
+            <div class="form-inputs">
+                <label>ФИО</label>
+                <input class="field" type="text" name="Users[Name]"  ng-model="name" required>
+                <span id="Name" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Почтовый ящик</label>
+                <input class="field" type="text" name="Users[Email]" ng-model="email" required ng-pattern="EMAIL_REGEXP">
+                <span id="Email" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Номер телефона</label>
+                <input class="field" type="text" name="Users[Phone]"  ng-model="phone" required number-kies>
+                <span id="Phone" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Пароль</label>
+                <input class="field" type="password" name="Users[Password]" ng-model="password">
+                <span id="Password" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Подтверждение пароля</label>
+                <input class="field" type="password" name="Users[PasswordR]" ng-model="passwordR">
+                <span id="PasswordR" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <div class="fix-label">
+                    <label>Адресс доставки по умолчанию</label>
+                    <textarea class="field" name="Users[Address]" rows="5" ng-model="address"></textarea>
+                    <span id="Address" class="mistake"></span>
+                </div>
+            </div>
+            <div class="form-inputs">
+                <label>Подписка на новости</label>
+                <input type="checkbox" ng-model="isnews">
+                <span id="IsNews" class="mistake"></span>
+            </div>
+            <div class="form-actions">
+                <input class="btn" type="submit" value="Сохранить изменения">
+                <div ng-controller="LogoutCtrl" style="display: inline">
+                    <a href="#" ng-click="logout()">Выйти</a>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>

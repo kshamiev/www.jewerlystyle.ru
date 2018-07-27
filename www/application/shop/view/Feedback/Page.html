@@ -1,0 +1,44 @@
+<h1>Написать нам</h1>
+<form  ng-submit="sendFeedback()" ng-controller="FeedbackSendCtrl" ng-show="showFeedbackForm">
+    <div class="form">
+        <fieldset>
+            <div class="form-inputs">
+                <label>ФИО<span>*</span></label>
+                <input class="field" type="text" name="Feedback[Fio]" ng-model="message.fio" required placeholder="Иванов И.И.">
+                <span id="Fio" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Ваш Email<span>*</span></label>
+                <input class="field" type="text" name="Feedback[Email]"  ng-model="message.email" required ng-pattern="EMAIL_REGEXP" placeholder="email@example.com">
+                <span id="Email" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <label>Тема<span>*</span></label>
+                <input class="field" type="text" name="Feedback[Name]"  ng-model="message.name" required>
+                <span id="Name" class="mistake"></span>
+            </div>
+            <div class="form-inputs">
+                <div class="fix-label">
+                    <label>Сообщение<span>*</span></label>
+                    <textarea class="field" name="Feedback[Message]" rows="7" ng-model="message.message" required></textarea>
+                    <span id="Message" class="mistake"></span>
+                </div>
+            </div>
+            <div class="form-inputs">
+                <div class="captcha-label">
+                    <label>Кликните по картинке, чтобы обновить</label>
+                    <img onclick="this.src='/user/captcha?'+Math.random();" src="/user/captcha" border="0" style="cursor: pointer;">
+                </div>
+            </div>
+            <div class="form-inputs">
+                <label>Введите символы с картинки</label>
+                <input class="field" type="text" name="Feedback[Keystring]" ng-model="message.keystring" required>
+                <span id="Keystring" class="mistake"></span>
+            </div>
+            <div class="form-actions">
+                <button class="btn" type="submit">Отправить</button>
+            </div>
+        </fieldset>
+    </div>
+</form>
+<div class="not-found" ng-controller="HideFeedbackCtrl" ng-show="hideForm"><span ng-bind="msg"></span></div>
